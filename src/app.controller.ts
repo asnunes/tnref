@@ -28,8 +28,7 @@ export class AppController {
       throw new HttpException('Invalid page value', HttpStatus.BAD_REQUEST);
     }
 
-    // return this.appService.getTweets(page);
-    return []
+    return this.appService.getTweets(page);
   }
 
   @Get('tweets/:username')
@@ -40,8 +39,7 @@ export class AppController {
   @Post('tweets')
   createTweet(@Body() tweetDTO: CreateTweetDTO) {
     try {
-      // return this.appService.createTweet(tweetDTO);
-      return []
+      return this.appService.createTweet(tweetDTO);
     } catch (error) {
       console.log(error);
       throw new HttpException(error.message, HttpStatus.UNAUTHORIZED);
@@ -51,7 +49,6 @@ export class AppController {
   @Post('sign-up')
   @HttpCode(HttpStatus.OK)
   signUp(@Body() loginDTO: LoginDTO) {
-    // return this.appService.login(loginDTO);
-    return 'pudim'
+    return this.appService.login(loginDTO);
   }
 }
